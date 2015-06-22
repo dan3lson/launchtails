@@ -14,7 +14,20 @@ class DrinksController < ApplicationController
   end
 
   def index
-    @drinks = Drink.all
+    # Code below works and is ahead of released specs
+    #binding.pry
+    #category = Category.find(params[:id])
+    #@drinks = category.drinks
+  end
+
+  def show
+  end
+
+  def destroy
+    @drink = Drink.find(params[:id])
+    @drink.destroy
+    flash[:notice] = 'Drink deleted.'
+    redirect_to drinks_path
   end
 
   protected
